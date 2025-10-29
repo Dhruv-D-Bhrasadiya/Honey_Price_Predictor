@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honey Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🍯 Honey Price Predictor</h1>
+        <p>Enter the characteristics of the honey to get a price prediction.</p>
+
+        <form action="/" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="Pollen_analysis">Pollen Analysis (Type of Honey)</label>
+                    <select name="Pollen_analysis" id="Pollen_analysis" required>
+                        {% for type in pollen_types %}
+                        <option value="{{ type }}">{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="CS">Color (CS)</label>
+                    <input type="number" name="CS" value="5.50" step="0.01" min="1.0" max="10.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Density">Density (g/cm³)</label>
+                    <input type="number" name="Density" value="1.54" step="0.01" min="1.21" max="1.86" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="WC">Water Content (WC %)</label>
+                    <input type="number" name="WC" value="18.50" step="0.01" min="12.0" max="25.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pH">pH</label>
+                    <input type="number" name="pH" value="5.00" step="0.01" min="2.50" max="7.50" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="EC">Electrical Conductivity (EC)</label>
+                    <input type="number" name="EC" value="0.80" step="0.01" min="0.70" max="0.90" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="F">Fructose (F %)</label>
+                    <input type="number" name="F" value="34.97" step="0.01" min="20.0" max="50.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="G">Glucose (G %)</label>
+                    <input type="number" name="G" value="32.50" step="0.01" min="20.0" max="45.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Viscosity">Viscosity (mPa·s)</label>
+                    <input type="number" name="Viscosity" value="5753.0" step="0.01" min="1500.0" max="10000.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Purity">Purity (0.0 to 1.0 scale)</label>
+                    <input type="number" name="Purity" value="0.82" step="0.01" min="0.61" max="1.0" required>
+                </div>
+            </div>
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="prediction">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

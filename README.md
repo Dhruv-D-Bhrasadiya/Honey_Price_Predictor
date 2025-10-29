@@ -1,32 +1,34 @@
 # Honey Price Predictor
 
-A small project to train a model that predicts honey prices from honey characteristics, and a Streamlit app to make predictions interactively.
+A small project to train a model that predicts honey prices from honey characteristics, and a Flask web app to make predictions interactively.
 
 ## Repository structure
 
-- `app.py` - Streamlit application that loads pre-trained artifacts (`best_model.pkl`, `model_columns.pkl`, `pollen_types.pkl`) and provides a UI to enter honey characteristics and get a price prediction.
+- `app.py` - Flask web application that loads pre-trained artifacts and provides a UI to enter honey characteristics and get a price prediction.
 - `main.py` - Script that loads `honey_purity_dataset.csv`, trains several regressors, selects the best model, and saves the artifacts required by the app:
   - `best_model.pkl` - trained model
   - `model_columns.pkl` - column order used by the model
   - `pollen_types.pkl` - list of available pollen/honey types for the app dropdown
+- `templates/index.html` - The HTML template for the Flask web form.
+- `static/style.css` - The CSS stylesheet for the web application.
 - `honey_purity_dataset.csv` - dataset used for training and analysis (should be present in the repository root).
 - `Regression_price_of_honey_prediction.ipynb` - notebook version of the analysis and modelling.
 
 ## Purpose
 
-The project trains regression models (Ridge, RandomForest, GradientBoosting) on honey chemistry and pollen analysis data to predict honey price. The Streamlit app (`app.py`) provides an easy-to-use UI for non-technical users to get price predictions from model artifacts produced by `main.py`.
+The project trains regression models (Ridge, RandomForest, GradientBoosting) on honey chemistry and pollen analysis data to predict honey price. The Flask app (`app.py`) provides an easy-to-use UI for non-technical users to get price predictions from model artifacts produced by `main.py`.
 
 ## Requirements
 
 This project was developed on Windows. The following are recommended:
 
 - Python 3.8+
-- Packages: pandas, numpy, scikit-learn, seaborn, matplotlib, streamlit, joblib
+- Packages: pandas, numpy, scikit-learn, seaborn, matplotlib, joblib, Flask
 
-Install dependencies with pip:
+You can install the required packages using pip:
 
 ```powershell
-pip install pandas numpy scikit-learn seaborn matplotlib streamlit joblib
+pip install pandas numpy scikit-learn seaborn matplotlib joblib Flask
 ```
 
 (If you prefer, create a virtual environment first.)
