@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Model Plots - Honey Price Predictor{% endblock %}
+
+{% block content %}
+    <h1>Model Performance Plots</h1>
+    <p>These plots were generated during the last model training session.</p>
+
+    {% if not plots_exist.correlation and not plots_exist.actual_vs_predicted %}
+        <div class="error-message">
+            <h2>No Plots Found!</h2>
+            <p>The plot image files are missing from the <code>static/plots/</code> directory.</p>
+            <p>Please run the training script from your terminal to generate them:</p>
+            <code>python main.py</code>
+            <p>After the script finishes, restart this web application.</p>
+        </div>
+    {% else %}
+        <div class="plot-container">
+            {% if plots_exist.correlation %}
+                <h2>Correlation Matrix of Features</h2>
+                <img src="{{ url_for('static', filename='plots/correlation_matrix.png') }}" alt="Correlation Matrix">
+            {% endif %}
+
+            {% if plots_exist.actual_vs_predicted %}
+                <h2>Actual vs. Predicted Prices (Best Model)</h2>
+                <img src="{{ url_for('static', filename='plots/actual_vs_predicted.png') }}" alt="Actual vs. Predicted Prices">
+            {% endif %}
+
+            {% if plots_exist.residuals %}
+                <h2>Distribution of Residuals (Best Model)</h2>
+                <img src="{{ url_for('static', filename='plots/residuals_distribution.png') }}" alt="Distribution of Residuals">
+            {% endif %}
+
+            {% if plots_exist.feature_importance %}
+                <h2>Feature Importance (Best Model)</h2>
+                <p>This chart shows which factors the model weighed most heavily in its predictions.</p>
+                <img src="{{ url_for('static', filename='plots/feature_importance.png') }}" alt="Feature Importance Plot">
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}
