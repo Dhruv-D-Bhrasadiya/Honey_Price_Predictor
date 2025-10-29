@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Data Analysis - Honey Price Predictor{% endblock %}
+
+{% block content %}
+    <h1>🔬 Dataset Analysis</h1>
+    <p>These plots explore the characteristics of the honey dataset used for training the model.</p>
+
+    {% if not plots_exist.correlation and not plots_exist.distributions %}
+        <div class="error-message">
+            <h2>No Analysis Plots Found!</h2>
+            <p>The plot image files are missing from the <code>static/plots/</code> directory.</p>
+            <p>Please run the training script from your terminal to generate them:</p>
+            <code>python main.py</code>
+            <p>After the script finishes, restart this web application.</p>
+        </div>
+    {% else %}
+        <div class="plot-container">
+            <h2>Distribution of Numerical Features</h2>
+            <img src="{{ url_for('static', filename='plots/feature_distributions.png') }}" alt="Feature Distributions">
+
+            <h2>Relationship of Key Features with Price</h2>
+            <img src="{{ url_for('static', filename='plots/price_vs_features.png') }}" alt="Price vs. Key Features">
+
+            <h2>Correlation Matrix of All Features</h2>
+            <img src="{{ url_for('static', filename='plots/correlation_matrix.png') }}" alt="Correlation Matrix">
+        </div>
+    {% endif %}
+{% endblock %}

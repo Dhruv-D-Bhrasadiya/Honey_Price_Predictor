@@ -4,9 +4,39 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align to top */
     min-height: 100vh;
     margin: 0;
+    padding-top: 80px; /* Space for the fixed navbar */
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 60px;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff6347;
+    text-decoration: none;
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
 }
 
 .container {
@@ -14,7 +44,7 @@ body {
     padding: 2rem 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
 }
 
@@ -60,4 +90,62 @@ input, select {
     font-size: 1.5rem;
     font-weight: bold;
     color: #28a745; /* Green */
+}
+
+.dashboard-summary {
+    background-color: #e9f5ff;
+    border-left: 5px solid #007bff;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 5px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.results-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.plot-container {
+    text-align: center;
+}
+
+.plot-container img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.error-message {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.error-message code {
+    background-color: #d1ecf1;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
 }
