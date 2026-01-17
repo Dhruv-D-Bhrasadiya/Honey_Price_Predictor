@@ -1,6 +1,6 @@
 # Honey Price Predictor
 
-A small project to train a model that predicts honey prices from honey characteristics, and a Flask web app to make predictions interactively.
+A project build from scratch that predicts honey prices from honey characteristics, and a Flask web app to make predictions interactively.
 
 ## Repository structure
 
@@ -80,8 +80,6 @@ Streamlit will open a local URL (usually `http://localhost:8501`) where you can 
 
 ## License
 
-No license specified. Add a LICENSE file if you plan to publish or share this project.
+This project is licensed under the terms of the [MIT License](LICENSE).
 
 ---
-
-If you want, I can also add a `requirements.txt` and a short `Makefile` or `tasks.json` to make running the training and app commands easier on Windows.
